@@ -58,6 +58,7 @@ body {
 }
 .navbar__wrapper {
     width: 100%;
+    padding: 4px;
 }
 
 .navbar {
@@ -65,15 +66,18 @@ body {
     flex-direction: column;
     width: 100%;
     align-items: flex-end;
-    gap: 4px;
-    padding: 4px;
+    font-size: 13px;
+    padding: 6px;
+    height: 48px;
     @media (min-width: 576px) {
         flex-direction: row;
         align-items: center;
-    justify-content: flex-end;
+        justify-content: flex-end;
     }
 }
-
+.navbar__item {
+    padding-right: 15px;
+}
 .main__wrapper {
     display: grid;
     place-items: center;
@@ -83,29 +87,78 @@ body {
 .search__wrapper {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    align-items: center;
     padding: 2rem;
+    width: 100%;
 }
-
+.logo {
+    max-width: 350px;
+}
 .search__form {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 20px;
+    width: 100%;
 }
-
-.search__input, .search__button {
-    border-radius: 1rem;
-    border: none;
-    outline: 1px solid $grey-400;
-    padding: 0.5rem 1rem;
+.search__input-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 48px;
 }
 .search__input {
     color: inherit;
-}
-.search__button {
-    background: $gradient-1;
-    color: $grey-100;
-    &:hover {
-        cursor: pointer;
+    height: 100%;
+    border-radius: 3rem;
+    border: none;
+    outline: 1px solid $grey-200;
+    padding: 0.5rem 1rem;
+    caret-color: $grey-500;
+    color: $grey-900;
+    font-size: 1rem;
+    &:focus {
+        outline: 1px solid $grey-400;
+        box-shadow: 0 1px 6px rgba(32,33,36,.28);
+        & + .search__icon {
+            opacity: 0;
+        }
+    }
+    &:valid + .search__icon {
+        opacity: 0;
     }
 }
+.search__icon {
+    fill: $grey-400;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 14px;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+.search__buttons-wrapper {
+    display: flex;
+    gap: 8px;
+}
+.search__button {
+    background: $gradient-2;
+    color: $grey-100;
+    border-radius: 4px;
+    border: none;
+    height: 36px;
+    padding: 0 16px;
+    max-width: 150px;
+    transition: background 0.5s ease-in-out;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 1px 6px rgba(32,33,36,.28);
+        background: $gradient-1;
+    }
+
+}
+
+
