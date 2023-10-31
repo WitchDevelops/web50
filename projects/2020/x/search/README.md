@@ -2,16 +2,20 @@
 
 It is Project 0 for the [CS50’s Web Programming with Python and JavaScript](https://cs50.harvard.edu/web/2020/).
 
+Deployed to Netlify: [Zephyr search live](https://zephyr-search.netlify.app/)
+
 ## Functionality
 
 * user is able to type in a query and gets redirected to the Google Search results for the given query.
 * "I'm feeling lucky" button redirects the user directly to the first link on the results page.
 * Image search redirects the user to the Google Images search results page for the given query.
+* advaced search lets the user use advanced search parameters, similar to the Google advanced search.
 
 ## Design
 I have decided to come up with a name, branding and favicon for the Google Search clone. Because it's quick and lighweight, I thought that Zephyr would be a fitting name, one of the four winds in Greek mythology (read more about Zephyr [here](https://en.wikipedia.org/wiki/Zephyr)). Then the obvius color palette was in light blue with a tint of green, paired with a thin and airy font. I have chosen Montserrat Light with increased tracking for the airy feel, and went for a linear gradient from Deep Ocean Blue #005EB8 to Fresh Aquamarine #00FFD1, like an ocean breeze. The favicon is a simple compass rose in gradient colors. I have completed the color palette with a set of greys.
 
 ## Tech
+
 ### Basic search
 Basic search functionality was achieved with a `<form>` element with an action attribute set to `https://www.google.com/search`. User input was given the `name="q"`. This allows to take user input from this form, give it a query parameter `q` and submit it to the Google search. All those elements allow for a redirect to the Google search results with a given user input query.
 
@@ -31,7 +35,22 @@ Upon inspection you may notice that the "I'm feeling lucky" button on Google app
 ### Image search
 To be able to achieve this functionality, one of the search parameters has to be `tbm=isch`. To achieve this, I added a hidden input with the `name="tbm"` and `value="isch"`. This way the `tbm=isch` gets appended to the search query and redirects the user to Google image search results.
 
+### Advanced search
+After figuring out the image search, this one was easy. Upon closer inspection of advanced search string parameters I noticede that Google uses:
+* `as_q` for the search using all the words, e.g. `as_q=funny+cat+videos` (it combines the words)
+* `as_epq` for the exact search, e.g. `as_epq=rat+terrier`, which shows up in the search input field as `"rat terrier"`` (it looks up the exact phrase)
+* `as_oq` to include any of the words, which results in the `OR` operator between the input words
+* `as_eq` to exclude the words from the search, which shows in the saerch input fields with each word preceded with a minus sign.
+
+Setting each of those parameters as the `name` attribute of the input field in the form allows to combine them into an advanced search string.
+
+example:
+```html
+<input type="text" name="as_eq">
+```
+
 ## Helpful resources
 * [StackOverflow: "I'm feeling lucky"](https://stackoverflow.com/questions/62869308/how-implement-im-feeling-lucky-in-html)
 * [StackOverflow: Google Image search](https://stackoverflow.com/questions/63040965/how-do-i-create-a-link-to-google-image-search-via-html-form)
 * [Article: Google search URL request parameters](https://stenevang.wordpress.com/2013/02/22/google-advanced-power-search-url-request-parameters/)
+* Close inspection of the [Google Advanced search](https://www.google.com/advanced_search)
