@@ -1,4 +1,5 @@
 $accent-1: #005EB8;
+$accent-1--darker: #00417d;
 $accent-2: #00FFD1;
 $grey-900: #444444;
 $grey-800: #6B6B6B;
@@ -12,6 +13,7 @@ $white: #FFFFFF;
 
 $gradient-1: linear-gradient(45deg, $accent-1 0%, $accent-2 100%);
 $gradient-2: linear-gradient(45deg, $accent-1 100%, $accent-2 100%);
+$gradient-3: linear-gradient(45deg, $accent-1 -100%, $accent-2 100%);
 
 @keyframes gradient-animation {
     0% {
@@ -55,6 +57,9 @@ a {
 body {
     font-family: 'Montserrat', sans-serif;
     color: $grey-900;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;
 }
 .navbar__wrapper {
     width: 100%;
@@ -81,7 +86,7 @@ body {
 .main__wrapper {
     display: grid;
     place-items: center;
-    height: 500px;
+    min-height: 500px;
 }
 
 .search__wrapper {
@@ -94,6 +99,18 @@ body {
 .logo {
     max-width: 350px;
 }
+.search__title {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    background: $gradient-1;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.line {
+    width: 100%;
+    border: 0.5px solid $grey-200;
+}
 .search__form {
     display: flex;
     flex-direction: column;
@@ -102,11 +119,30 @@ body {
     padding: 20px;
     width: 100%;
 }
+.search__subtitle {
+    align-self:flex-start;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
 .search__input-wrapper {
     position: relative;
     width: 100%;
     max-width: 600px;
     height: 48px;
+    &--advanced {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        @media (min-width: 576px) {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            align-items: center;
+        }
+    }
+}
+.search__label {
+    font-size: 0.9rem;
 }
 .search__input {
     color: inherit;
@@ -119,7 +155,7 @@ body {
     color: $grey-900;
     font-size: 1rem;
     &:focus {
-        outline: 1px solid $grey-400;
+        outline: 1px solid $accent-1;
         box-shadow: 0 1px 6px rgba(32,33,36,.28);
         & + .search__icon {
             opacity: 0;
@@ -143,6 +179,9 @@ body {
 .search__buttons-wrapper {
     display: flex;
     gap: 8px;
+    &--advanced {
+        align-self: flex-end;
+    }
 }
 .search__button {
     background: $gradient-2;
@@ -158,7 +197,21 @@ body {
         box-shadow: 0 1px 6px rgba(32,33,36,.28);
         background: $gradient-1;
     }
-
+    &:focus {
+        outline: none;
+        box-shadow: 0 1px 6px rgba(32,33,36,.28);
+        background: $gradient-1;
+    }
+    &:active {
+        box-shadow: 0 1px 6px rgba(32,33,36,.28);
+        background: $gradient-3;
+        outline: none;
+    }
 }
 
-
+.footer__wrapper {
+    background-color: $grey-200;
+    display: grid;
+    place-items: center;
+    font-size: 0.8rem;
+}
