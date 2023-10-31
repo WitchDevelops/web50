@@ -28,7 +28,10 @@ To be honest, I've always been scared of this function so I never used it, until
 Implementing this feature is simple: all you need to do is adding a `name="btnI"` to the `submit` button.
 Upon inspection you may notice that the "I'm feeling lucky" button on Google appends the `&btn1` at the end of the URL query, thus adding `name="btnI"` attribute on the submit button achieves that behavior.
 
-### Helpful resources
+### Image search
+To be able to achieve this functionality, one of the search parameters has to be `tbm=isch`. To achieve this, I added a hidden input with the `name="tbm"` and `value="isch"`. This way the `tbm=isch` gets appended to the search query and redirects the user to Google image search results.
+
+## Helpful resources
 * [StackOverflow: "I'm feeling lucky"](https://stackoverflow.com/questions/62869308/how-implement-im-feeling-lucky-in-html)
 * [StackOverflow: Google Image search](https://stackoverflow.com/questions/63040965/how-do-i-create-a-link-to-google-image-search-via-html-form)
 * [Article: Google search URL request parameters](https://stenevang.wordpress.com/2013/02/22/google-advanced-power-search-url-request-parameters/)
