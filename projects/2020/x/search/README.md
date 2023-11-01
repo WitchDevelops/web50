@@ -16,6 +16,12 @@ I have decided to come up with a name, branding and favicon for the Google Searc
 
 ## Tech
 
+<div align="center">
+    <img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/html-5.svg"/>
+    <img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/css-3.svg"/>
+    <img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/sass.svg"/>
+</div>
+
 ### Basic search
 Basic search functionality was achieved with a `<form>` element with an action attribute set to `https://www.google.com/search`. User input was given the `name="q"`. This allows to take user input from this form, give it a query parameter `q` and submit it to the Google search. All those elements allow for a redirect to the Google search results with a given user input query.
 
